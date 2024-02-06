@@ -7,7 +7,7 @@ This is installed on the YELLOW microbit
 """
 
 import radio
-from microbit import display
+from microbit import display, sleep
 
 def unlock():
     """
@@ -34,12 +34,15 @@ while True:
     if packet:
         display.show('R')
         
-        # if the message is the unlock code
+        # if the message is the unlock code...
         if packet == 'hkaqBgsbRARY':
             
             # ...then unlock!
             display.show("UNLOCKED!")
-            encrypted = unlock()
+            unlock()
+        
+        # ...otherwise just display an X
         else:
             display.show('X')
+            sleep(1000)
             display.clear()
