@@ -51,7 +51,7 @@ while True:
             serial = Serial(port=serial_device_path, baudrate=19200, timeout=0.5)
 
             # send the unlock code
-            serial.write(bytes(UNLOCK_CODE, encoding='utf-8'))
+            serial.write(bytes(UNLOCK_CODE.upper() + "$", encoding='utf-8'))
         
         else:
             print("No serial device available")

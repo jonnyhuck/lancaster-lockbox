@@ -7,13 +7,15 @@ This is installed on the YELLOW microbit
 """
 
 import radio
-from microbit import display, sleep
+from microbit import display, sleep, pin1
 
 def unlock():
     """
     Validate that the number is correct
     """
-    pass # COLIN TO REPLACE THIS LINE WITH COMMANDS TO UNLOCK THE BOX
+    pin1.write_digital(1)
+    sleep(5000)
+    pin1.write_digital(0)
 
 
 # init display (just to show that it's working)
@@ -35,10 +37,10 @@ while True:
         display.show('R')
         
         # if the message is the unlock code...
-        if packet == 'hkaqBgsbRARY':
+        if packet.upper() == 'hkaqBgsbRARY'.upper():
             
             # ...then unlock!
-            display.show("UNLOCKED!")
+            display.scroll("UNLOCKED!")
             unlock()
         
         # ...otherwise just display an X
