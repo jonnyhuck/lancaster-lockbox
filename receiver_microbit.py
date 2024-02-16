@@ -1,20 +1,17 @@
 """
-This is a boilerplate radio receiver - all you should need to do is
-    replace the 'pass' line in the unlock() method with whatever you 
-    need to do to deactivate the lock and we should be done!!
-
-This is installed on the YELLOW microbit
+* This is installed on the microbit in the ammo box
 """
 
 import radio
-from microbit import display, sleep, pin1
+from microbit import display, sleep, pin1, button_a
+
 
 def unlock():
     """
-    Validate that the number is correct
+    * unlock the box for 2.5 seconds
     """
     pin1.write_digital(1)
-    sleep(5000)
+    sleep(2500)
     pin1.write_digital(0)
 
 
@@ -31,6 +28,11 @@ radio.config(group=1)
 # infinite loop
 while True:
 
+    # check button and unlock if pressed (for testing)
+    if button_a.is_pressed():
+        display.scroll("A")
+        unlock()
+    
     # try to read a message
     packet = radio.receive()
     if packet:

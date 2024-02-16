@@ -8,6 +8,7 @@ TODO: This must be run on one of the older microbits (with shiny surface) - the 
 import radio
 from microbit import uart, display
 
+
 # initialise serial comms
 uart.init(baudrate=19200)
 
