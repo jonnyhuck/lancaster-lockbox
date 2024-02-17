@@ -30,7 +30,7 @@ while True:
 
     # check button and unlock if pressed (for testing)
     if button_a.is_pressed():
-        display.scroll("A")
+        display.show("A")
         unlock()
     
     # try to read a message
@@ -42,8 +42,8 @@ while True:
         if packet.upper() == 'hkaqBgsbRARY'.upper():
             
             # ...then unlock!
-            display.scroll("UNLOCKED!")
             unlock()
+            display.scroll("UNLOCKED!")
         
         # ...otherwise just display an X
         else:
